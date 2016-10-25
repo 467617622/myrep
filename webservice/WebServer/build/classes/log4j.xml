@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="true">
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="ROOTOUT"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/out/app-out.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="SERVERINTERFACE-13"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/serverinterface-13.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="SERVERINTERFACE-17"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/serverinterface-17.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="SERVERINTERFACE-23"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/serverinterface-23.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="SERVERINTERFACE-28"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/serverinterface-28.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="SERVERINTERFACE-52"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/serverinterface-52.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="CLIENTINTERFACE-13"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/clientinterface-13.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="CLIENTINTERFACE-17"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/clientinterface-17.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="CLIENTINTERFACE-23"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/clientinterface-23.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="CLIENTINTERFACE-28"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/clientinterface-28.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="CLIENTINTERFACE-52"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/interface/clientinterface-52.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="DEBUG"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/debug/app-debug.log" />
+		<param name="Append" value="true" />
+		<param  name="DatePattern"  value="'.'yyyyMMdd'.log'"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+				<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="DEBUG" />
+		</filter>
+	</appender>
+
+	<appender name="INFO"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/info/app-info.log" />
+		<param name="Append" value="true" />
+		<param  name="DatePattern"  value="'.'yyyyMMdd'.log'"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+				<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+			<param name="LevelMax" value="INFO" />
+		</filter>
+	</appender>
+
+	<appender name="WARN"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/warn/app-warn.log" />
+		<param name="Append" value="true" />
+		<param  name="DatePattern"  value="'.'yyyyMMdd'.log'"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+				<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [SCF-SCF9999CHK] [%m%n]" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="WARN" />
+			<param name="LevelMax" value="WARN" />
+		</filter>
+	</appender>
+
+	<appender name="ERROR"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/error/app-error.log" />
+		<param name="Append" value="true" />
+		<param  name="DatePattern"  value="'.'yyyyMMdd'.log'"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+				<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [SCF-SCF9999CHK] [%m%n]" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR" />
+			<param name="LevelMax" value="ERROR" />
+		</filter>
+	</appender>
+
+	<!-- System Init -->
+	<appender name="SystemStartupAppender"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wasadmin/scf/log/gclog/scf/system/SystemStartup.log" />
+		<param name="Append" value="true" />
+		<param  name="DatePattern"  value="'.'yyyyMMdd'.log'"/>
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+				<param name="ConversionPattern" value="[%-4p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] %C - %m%n" />
+		</layout>
+	</appender>
+
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="ROOTOUT" />
+		<appender-ref ref="INFO" />
+		<appender-ref ref="ERROR" />
+	</root>
+</log4j:configuration>

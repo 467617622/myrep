@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping  package="com.huateng.scf.systemmng.data">
+    <class name="TblSysParam" table="TBL_SYS_PARAM">
+        <composite-id>
+        	<key-property name="paramId" column="PARAM_ID" type="java.lang.String"/>
+        	<key-property name="paramIndex" column="PARAM_INDEX" type="java.lang.String"/>
+        </composite-id>
+        <property name="paramName" type="java.lang.String">
+            <column name="PARAM_NAME" length="60" />
+        </property>
+        <property name="paramValue" type="java.lang.String">
+            <column name="PARAM_VALUE" length="20" />
+        </property>
+        <property name="paramDesc" type="java.lang.String">
+            <column name="PARAM_DESC" length="200" />
+        </property>
+        <property name="lastUpdDate" type="java.util.Date">
+            <column name="LAST_UPD_DATE" />
+        </property>
+        <property name="lastUpdTlr" type="java.lang.String">
+            <column name="LAST_UPD_TLR" length="8" />
+        </property>
+         <property name="defaultValue" type="java.lang.String">
+            <column name="DEFAULT_VALUE" length="20" />
+        </property>
+         <property name="type" type="java.lang.String">
+            <column name="TYPE" length="1" />
+        </property>
+    </class>
+
+    <!--  param_id进行读取 -->
+	<query name="TblSysParam_PI">
+		<![CDATA[
+			from TblSysParam as sysParam where sysParam.paramId = :paramId
+		]]>
+	</query>
+
+    <!--  param_id和param_index进行读取 -->
+	<query name="TblSwtSysParam_PI_MI">
+		<![CDATA[
+			from TblSysParam as sysParam where sysParam.paramId = :paramId and sysParam.paramIndex = :paramIndex
+		]]>
+	</query>
+</hibernate-mapping>

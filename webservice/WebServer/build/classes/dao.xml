@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "/WEB-INF/dtd/spring-beans-2.0.dtd">
+<beans>
+<bean id="SCFHQLDAO" class="com.huateng.scf.systemmng.dao.SCFHQLDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+	<bean id="TblCommLogDAO" class="com.huateng.scf.systemmng.dao.TblCommLogDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+	<bean id="TblContDebtExtInfoDAO" class="com.huateng.scf.systemmng.dao.TblContDebtExtInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+	<bean id="TblContDebtInfoDAO" class="com.huateng.scf.systemmng.dao.TblContDebtInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+	<bean id="TblCustBaseInfoDAO" class="com.huateng.scf.systemmng.dao.TblCustBaseInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+	<bean id="TblCustMapInfoDAO" class="com.huateng.scf.systemmng.dao.TblCustMapInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+	<bean id="TblDebtBaseInfoDAO" class="com.huateng.scf.systemmng.dao.TblDebtBaseInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+	<bean id="TblDebtExtInfoDAO" class="com.huateng.scf.systemmng.dao.TblDebtExtInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+	<bean id="TblLnciBaseInfoDAO" class="com.huateng.scf.systemmng.dao.TblLnciBaseInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+	<bean id="TblSysParamDAO" class="com.huateng.scf.systemmng.dao.TblSysParamDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="GlobalinfoDAO" class="com.huateng.scf.systemmng.dao.GlobalinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+	</bean>
+		<bean
+		id="com.huateng.scf.systemmng.service.BaseService"
+		class="com.huateng.scf.systemmng.service.BaseService">
+		<property name="dao">
+			<ref bean="SCFHQLDAO" />
+		</property>
+	</bean>
+		<!-- 中建八局接口-->
+<bean
+		id="com.huateng.scf.service.b2b.CLPMBusinessService"
+		class="com.huateng.scf.service.b2b.CLPMBusinessService">
+	</bean>
+</beans>

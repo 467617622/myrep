@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.scf.systemmng.data">
+	<class name="TblCustBaseInfo" table="TBL_CUST_BASE_INFO">
+		<meta attribute="sync-DAO">false</meta>
+
+		<id name="custcd" type="string" column="CUSTCD">
+			<generator class="assigned" />
+		</id>
+
+		<property name="custno" column="CUSTNO" type="string"
+			not-null="false" length="50" />
+
+		<property name="ccmsCustcd" column="CCMS_CUSTCD" type="string"
+			not-null="false" length="50" />
+
+		<property name="custType" column="CUST_TYPE" type="string"
+			not-null="false" length="2" />
+
+		<property name="idtype" column="IDTYPE" type="string"
+			not-null="false" length="10" />
+
+		<property name="idno" column="IDNO" type="string" not-null="false"
+			length="50" />
+
+		<property name="cname" column="CNAME" type="string" not-null="false"
+			length="80" />
+
+		<property name="ename" column="ENAME" type="string" not-null="false"
+			length="100" />
+
+		<property name="aliasName" column="ALIAS_NAME" type="string"
+			not-null="false" length="80" />
+
+		<property name="orgCode" column="ORG_CODE" type="string"
+			not-null="false" length="50" />
+
+		<property name="licenseNo" column="LICENSE_NO" type="string"
+			not-null="false" length="20" />
+
+		<property name="licenseDate" column="LICENSE_DATE" type="date"
+			not-null="false" length="7" />
+
+		<property name="openDate" column="OPEN_DATE" type="date"
+			not-null="false" length="7" />
+
+		<property name="coreOpenDate" column="CORE_OPEN_DATE" type="date"
+			not-null="false" length="7" />
+
+		<property name="custStatus" column="CUST_STATUS" type="string"
+			not-null="false" length="2" />
+
+		<property name="lastUpdTlrcd" column="LAST_UPD_TLRCD" type="string"
+			not-null="false" length="20" />
+
+		<property name="lastUpdTime" column="LAST_UPD_TIME" type="java.util.Date"
+			not-null="false" />
+
+		<property name="mgrno" column="MGRNO" type="string" not-null="false"
+			length="50" />
+
+		<property name="coreFlag" column="CORE_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="moniFlag" column="MONI_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="futuresFlag" column="FUTURES_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="flcFlag" column="FLC_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="creditFlag" column="CREDIT_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="blackFlag" column="BLACK_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="brcode" column="BRCODE" type="string"
+			not-null="false" length="20" />
+
+		<property name="createDate" column="CREATE_DATE" type="java.util.Date"
+			not-null="false" />
+
+		<property name="insureFlag" column="INSURE_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="factorFlag" column="FACTOR_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="importantFlag" column="IMPORTANT_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="commercialFlag" column="COMMERCIAL_FALG" type="string"
+			not-null="false" length="1" />
+
+
+		<property name="overseasFlag" column="OVERSEAS_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="banksCustFlag" column="BANKS_CUST_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="efBuyerFlag" column="EF_BUYER_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="ifSellerFlag" column="IF_SELLER_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="isBank" column="IS_BANK" type="string"
+			not-null="false" length="1" />
+
+		<property name="fciCode" column="FCI_CODE" type="string"
+			not-null="false" length="10" />
+
+		<property name="isIntl" column="IS_INTL" type="string"
+			not-null="false" length="1" />
+
+		<property name="isFeePay" column="IS_FEE_PAY" type="string"
+			not-null="false" length="1" />
+
+		<property name="custChannel" column="CUST_CHANNEL" type="string"
+			not-null="false" length="2" />
+
+		<property name="belongMgrno" column="BELONG_MGRNO" type="string"
+			not-null="false" length="20" />
+	</class>
+</hibernate-mapping>

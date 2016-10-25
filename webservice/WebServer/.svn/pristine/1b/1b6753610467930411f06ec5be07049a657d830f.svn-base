@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.scf.systemmng.data">
+	<class name="TblLnciBaseInfo" table="TBL_LNCI_BASE_INFO">
+		<meta attribute="sync-DAO">false</meta>
+		<id name="debetNo" type="string" column="DEBET_NO">
+			<generator class="assigned" />
+		</id>
+
+		<property name="debetId" column="DEBET_ID" type="string"
+			not-null="true" length="100" />
+
+		<property name="mastContno" column="MAST_CONTNO" type="string"
+			not-null="false" length="20" />
+
+		<property name="appno" column="APPNO" type="string" not-null="false"
+			length="20" />
+
+		<property name="lnciType" column="LNCI_TYPE" type="string"
+			not-null="false" length="2" />
+
+		<property name="lnciStatus" column="LNCI_STATUS" type="string"
+			not-null="false" length="1" />
+
+		<property name="lnciAmt" column="LNCI_AMT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="lnciBal" column="LNCI_BAL" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="startDate" column="START_DATE" type="date"
+			not-null="false" length="7" />
+
+		<property name="endDate" column="END_DATE" type="date"
+			not-null="false" length="7" />
+
+		<property name="mgrno" column="MGRNO" type="string" not-null="false"
+			length="20" />
+
+		<property name="fivelevel" column="FIVELEVEL" type="string"
+			not-null="false" length="2" />
+
+		<property name="curcd" column="CURCD" type="string" not-null="false"
+			length="3" />
+
+		<property name="commonDate" column="COMMON_DATE" type="timestamp"
+			not-null="false" />
+
+		<property name="accountNo" column="ACCOUNT_NO" type="string"
+			not-null="false" length="50" />
+
+		<property name="confirmStatus" column="CONFIRM_STATUS" type="string"
+			not-null="false" length="1" />
+
+		<property name="bailAmount" column="BAIL_AMOUNT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="amountIn" column="AMOUNT_IN" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="amountOut" column="AMOUNT_OUT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="firstBailRatio" column="FIRST_BAIL_RATIO"
+			type="big_decimal" not-null="false" length="22" />
+
+		<property name="protocolNo" column="PROTOCOL_NO" type="string"
+			not-null="false" length="20" />
+
+		<property name="orderNo" column="ORDER_NO" type="string"
+			not-null="false" length="100" />
+
+		<property name="billType" column="BILL_TYPE" type="string"
+			not-null="false" length="1" />
+
+		<property name="bailAccount" column="BAIL_ACCOUNT" type="string"
+			not-null="false" length="50" />
+
+		<property name="billNum" column="BILL_NUM" type="integer"
+			not-null="false" length="38" />
+
+		<property name="loanDays" column="LOAN_DAYS" type="string"
+			not-null="false" length="10" />
+
+		<property name="addBailAmount" column="ADD_BAIL_AMOUNT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="slaveContno" column="SLAVE_CONTNO" type="string"
+			not-null="false" length="20" />
+
+		<property name="amountUpOut" column="AMOUNT_UP_OUT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="slaveLimit" column="SLAVE_LIMIT" type="string"
+			not-null="false" length="6" />
+
+		<property name="isLocked" column="IS_LOCKED" type="string"
+			not-null="false" length="1" />
+
+		<property name="lockAppno" column="LOCK_APPNO" type="string"
+			not-null="false" length="20" />
+
+		<property name="addCashEqtAmt" column="ADD_CASH_EQT_AMT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="initCashEqtAmt" column="INIT_CASH_EQT_AMT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="loanAcctNo" column="LOAN_ACCT_NO" type="string"
+			not-null="false" length="50" />
+			
+			<property name="loanNo" column="LOAN_NO" type="string"
+			not-null="false" length="20" />
+
+		<property name="mastContcode" column="MAST_CONTCODE" type="string"
+			not-null="false" length="200" />
+
+		<property name="custcd" column="CUSTCD" type="string"
+			not-null="false" length="20" />
+
+		<property name="bussBrcode" column="BUSS_BRCODE" type="string"
+			not-null="false" length="20" />
+
+		<property name="acctBrcode" column="ACCT_BRCODE" type="string"
+			not-null="false" length="20" />
+
+		<property name="productId" column="PRODUCT_ID" type="string"
+			not-null="false" length="20" />
+
+		<property name="accountantType" column="ACCOUNTANT_TYPE"
+			type="string" not-null="false" length="10" />
+
+		<property name="depositDate" column="DEPOSIT_DATE" type="date"
+			not-null="false" length="7" />
+
+		<property name="loanType" column="LOAN_TYPE" type="string"
+			not-null="false" length="20" />
+
+		<property name="accruedStatus" column="ACCRUED_STATUS" type="string"
+			not-null="false" length="10" />
+
+		<property name="loanAcctStatus" column="LOAN_ACCT_STATUS"
+			type="string" not-null="false" length="10" />
+
+		<property name="loansChargeOrder" column="LOANS_CHARGE_ORDER"
+			type="string" not-null="false" length="10" />
+
+		<property name="issuedAmt" column="ISSUED_AMT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="avaliableAmt" column="AVALIABLE_AMT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="normalCapital" column="NORMAL_CAPITAL" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="overdueCapital" column="OVERDUE_CAPITAL"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="idleCapittal" column="IDLE_CAPITTAL" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="badCapital" column="BAD_CAPITAL" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="loanFund" column="LOAN_FUND" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="receivableAccuredInt" column="RECEIVABLE_ACCURED_INT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="collectionAccuredInt" column="COLLECTION_ACCURED_INT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="receivableInt" column="RECEIVABLE_INT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="collectionInt" column="COLLECTION_INT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="receivableAccuredPint" column="RECEIVABLE_ACCURED_PINT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="collectionAccuredPint" column="COLLECTION_ACCURED_PINT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="receivablePunishInt" column="RECEIVABLE_PUNISH_INT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="collectionPunishInt" column="COLLECTION_PUNISH_INT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="accuredCompountInt" column="ACCURED_COMPOUNT_INT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="compoundInt" column="COMPOUND_INT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="accuredDiscountInt" column="ACCURED_DISCOUNT_INT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="receivableDiscountInt" column="RECEIVABLE_DISCOUNT_INT"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="deferredInt" column="DEFERRED_INT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="verifiedCapital" column="VERIFIED_CAPITAL"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="verifiedInt" column="VERIFIED_INT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="interest" column="INTEREST" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="receivalbeFee" column="RECEIVALBE_FEE" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="fee" column="FEE" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="receivalbeFine" column="RECEIVALBE_FINE"
+			type="big_decimal" not-null="false" length="16" />
+
+		<property name="fine" column="FINE" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="reservedAmt" column="RESERVED_AMT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="lastAcctTxdate" column="LAST_ACCT_TXDATE"
+			type="date" not-null="false" length="7" />
+
+		<property name="detailNo" column="DETAIL_NO" type="string"
+			not-null="false" length="50" />
+
+		<property name="depositBrcode" column="DEPOSIT_BRCODE" type="string"
+			not-null="false" length="20" />
+
+		<property name="depositTlrno" column="DEPOSIT_TLRNO" type="string"
+			not-null="false" length="20" />
+
+		<property name="maintenanceDate" column="MAINTENANCE_DATE"
+			type="date" not-null="false" length="7" />
+
+		<property name="maintenanceTlrno" column="MAINTENANCE_TLRNO"
+			type="string" not-null="false" length="20" />
+
+		<property name="cancellationDate" column="CANCELLATION_DATE"
+			type="date" not-null="false" length="7" />
+
+		<property name="cancellationTlrno" column="CANCELLATION_TLRNO"
+			type="string" not-null="false" length="20" />
+
+		<property name="timestamps" column="TIMESTAMPS" type="timestamp"
+			not-null="false" length="11" />
+
+		<property name="repayMethod" column="REPAY_METHOD" type="string"
+			not-null="false" length="10" />
+
+		<property name="graceDays" column="GRACE_DAYS" type="integer"
+			not-null="false" length="38" />
+
+		<property name="rateType" column="RATE_TYPE" type="string"
+			not-null="false" length="10" />
+
+		<property name="rateFloatType" column="RATE_FLOAT_TYPE" type="string"
+			not-null="false" length="10" />
+
+		<property name="rateFloatValue" column="RATE_FLOAT_VALUE"
+			type="big_decimal" not-null="false" length="10" />
+
+		<property name="baseYearRate" column="BASE_YEAR_RATE" type="big_decimal"
+			not-null="false" length="10" />
+
+		<property name="rateAdjustType" column="RATE_ADJUST_TYPE"
+			type="string" not-null="false" length="10" />
+
+		<property name="rate" column="RATE" type="big_decimal"
+			not-null="false" length="10" />
+
+		<property name="loanUse" column="LOAN_USE" type="string"
+			not-null="false" length="200" />
+
+		<property name="insertDate" column="INSERT_DATE" type="java.util.Date"
+			not-null="false" />
+
+		<property name="draftBrcode" column="DRAFT_BRCODE" type="string"
+			not-null="false" length="10" />
+
+		<property name="signBrcode" column="SIGN_BRCODE" type="string"
+			not-null="false" length="20" />
+
+		<property name="prePayBrcode" column="PRE_PAY_BRCODE" type="string"
+			not-null="false" length="20" />
+
+		<property name="ebFlag" column="EB_FLAG" type="string"
+			not-null="false" length="1" />
+
+		<property name="hasIndirectCredit" column="HAS_INDIRECT_CREDIT" type="string"
+			not-null="false" length="10" />
+
+		<property name="creditCustcd" column="CREDIT_CUSTCD" type="string"
+			not-null="false" length="40" />
+
+		<property name="orgDebetId" column="ORG_DEBET_ID" type="string"
+			not-null="false" length="100" />
+
+		<property name="loanAppno" column="LOAN_APPNO" type="string"
+			not-null="false" length="50" />
+
+		<property name="productCode" column="PRODUCT_CODE" type="string"
+			not-null="false" length="10" />
+
+		<property name="state" column="STATE" type="string"
+			not-null="false" length="1" />
+
+		<property name="payBrcode" column="PAY_BRCODE" type="string"
+			not-null="false" length="20" />
+
+		<property name="payTlrno" column="PAY_TLRNO" type="string"
+			not-null="false" length="20" />
+
+		<property name="payChecker" column="PAY_CHECKER" type="string"
+			not-null="false" length="20" />
+
+		<property name="isSettle" column="IS_SETTLE" type="string"
+			not-null="false" length="1" />
+
+		<property name="accuSendAmt" column="ACCU_SEND_AMT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="balSendAmt" column="BAL_SEND_AMT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="hasSendBp" column="HAS_SEND_BP" type="string"
+			not-null="false" length="1" />
+
+		<property name="coreState" column="CORE_STATE" type="string"
+			not-null="false" length="1" />
+
+		<property name="creditNo" column="CREDIT_NO" type="string"
+			not-null="false" length="20" />
+
+		<property name="saleBrcode" column="SALE_BRCODE" type="string"
+			not-null="false" length="20" />
+		<property name="ownFundPayAmt" column="OWN_FUND_PAY_AMT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="pastExchangeRate" column="PAST_EXCHANGE_RATE" type="big_decimal"
+			not-null="false" length="10" />
+			
+		<property name="appNum" column="APP_NUM" type="string"
+			not-null="true" length="80" />
+		
+	 
+	</class>
+</hibernate-mapping>

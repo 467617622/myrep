@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.scf.systemmng.data">
+	<class name="TblCustMapInfo" table="TBL_CUST_MAP_INFO">
+		<meta attribute="sync-DAO">false</meta>
+
+		<id name="id" type="string" column="id">
+			<generator class="assigned" />
+		</id>
+
+		<property name="custId" column="CUST_ID" type="string"
+			not-null="false" length="50" />
+
+		<property name="custName" column="CUST_NAME" type="string"
+			not-null="false" length="250" />
+
+		<property name="orgCode" column="ORG_CODE" type="string"
+			not-null="false" length="50" />
+
+		<property name="custNo" column="CUST_NO" type="string"
+			not-null="false" length="50" />
+
+		<property name="appno" column="APPNO" type="string" not-null="false"
+			length="50" />
+
+		<property name="custType" column="CUST_TYPE" type="string" not-null="false"
+			length="2" />
+		
+		<property name="status" column="STATUS" type="string"
+			not-null="false" length="2" />
+
+		<property name="startTlrcd" column="START_TLRCD" type="string" not-null="false"
+			length="50" />
+
+		<property name="startTlrname" column=" START_TLRNAME" type="string"
+			not-null="false" length="200" />
+
+		<property name="approveTlrcd" column="APPROVE_TLRCD" type="string"
+			not-null="false" length="50" />
+
+		<property name="approveTlrname" column="APPROVE_TLRNAME" type="string"
+			not-null="false" length="200" />
+		
+		<property name="approveDate" column="APPROVE_DATE" type="timestamp"
+			not-null="false" length="26" />
+			
+		<property name="startDate" column="START_DATE" type="timestamp"
+			not-null="false" length="26" />
+
+	 
+	</class>
+</hibernate-mapping>

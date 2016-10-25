@@ -1,0 +1,169 @@
+package com.huateng.scf.webservices;
+
+
+
+import org.apache.log4j.Logger;
+
+import com.huateng.common.DataFormat;
+import com.huateng.common.DateUtil;
+import com.huateng.ebank.framework.exceptions.CommonException;
+import com.huateng.scf.common.util.B2BConstants;
+import com.huateng.scf.db.SCFDAOUtils;
+import com.huateng.scf.db.SCFDateUtil;
+import com.huateng.scf.service.b2b.CLPMBusinessService;
+import com.huateng.scf.systemmng.data.TblCommLog;
+import com.huateng.scf.webservices.vo.BaseSysProxyBean;
+import com.huateng.scf.webservices.vo.DebtListVO;
+import com.huateng.scf.webservices.vo.LnciBaseVO;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
+/**
+ * B2B平台与SCF平台的通信service
+ *
+ * @author <a href="mailto:jingnan.wang@topscf.com">jingnan.wang</a>
+ *
+ * @version Revision: 1.0  Date: 2012-12-21 上午06:35:06
+ *
+ */
+public class CLPM2SCFService {
+
+	private static Logger log = Logger.getLogger(CLPM2SCFService.class);
+	private XStream xStream = new XStream(new DomDriver());
+	private CLPMBusinessService clpmBusinessService = CLPMBusinessService.getInstance();
+
+	
+	/**
+	 * @Description: 在log中保存交易信息
+	 * @author xiong_xiaolong
+	 * @Created 2012-7-20下午3:38:39
+	 * @param baseSysProxyBean
+	 */
+	private void logTradeInfo(BaseSysProxyBean baseSysProxyBean) {
+		log.info("CLPM trade with SCF \n" + xStream.toXML(baseSysProxyBean));
+	}
+
+	/**
+	 * @Description: 保存交易信息到通信日志表中
+	 * @author xiong_xiaolong
+	 * @Created 2012-7-20下午4:26:37
+	 * @param baseSysProxyBean
+	 */
+	private void saveTradeLogInfo(BaseSysProxyBean baseSysProxyBean,TblCommLog commLog) {
+		commLog.setSource("CLPM");
+		commLog.setDest("SCF");
+		commLog.setFlowNo(baseSysProxyBean.getFlowNo());
+		if (baseSysProxyBean.getResultCode().equals(B2BConstants.SUCCESS)) {
+			commLog.setTxnStatus("1");
+		} else {
+			commLog.setTxnStatus("2");
+		}
+		String erramsg=baseSysProxyBean.getErrmsg();
+		if(erramsg!=null&&erramsg.length()>256){
+			erramsg=erramsg.substring(0, 200);
+		}
+		commLog.setMisc(erramsg);
+		commLog.setTxnCode(baseSysProxyBean.getClass().getSimpleName());
+		commLog.setTxdate(DateUtil.getCurrentDate());
+		commLog.setTxtime(DateUtil.getCurrentTime());
+		commLog.setResCode(baseSysProxyBean.getResultCode());
+		commLog.setId(null);
+		SCFDAOUtils.getTblCommLogDAO().save(commLog);
+	}
+	/**
+	 * @Description: 接口方法初始前调用
+	 * @author jingnan.wang
+	 * @Created 2013-3-11上午11:05:41
+	 * @param baseSysProxyBean
+	 */
+	private TblCommLog befordMethod(BaseSysProxyBean baseSysProxyBean){
+		logTradeInfo(baseSysProxyBean);
+		TblCommLog commLog = new TblCommLog();
+		commLog.setSendMsg(xStream.toXML(baseSysProxyBean));
+		return commLog;
+	}
+	/**
+	 * @Description: 接口方法结束调用
+	 * @author jingnan.wang
+	 * @Created 2013-3-11上午11:09:02
+	 * @param baseSysProxyBean
+	 * @param commLog
+	 */
+	private void afterMethod(BaseSysProxyBean baseSysProxyBean,TblCommLog commLog){
+		commLog.setRcvMsg(xStream.toXML(baseSysProxyBean));
+		logTradeInfo(baseSysProxyBean);
+		saveTradeLogInfo(baseSysProxyBean,commLog);
+	}
+
+
+	/** IFSP接口 **   公共方法START  **/
+
+
+	/**
+	 * @Description: 中建从SCF推送应收账款
+	 * @param DebtBaseVO
+	 * @return
+	 * @throws CommonException 
+	 */
+	public DebtListVO debtHandle(DebtListVO lisdebt) throws CommonException {
+
+		TblCommLog commLog = befordMethod(lisdebt);
+		if (SCFDateUtil.isInTime()) {
+			String flowNo = lisdebt.getFlowNo();
+			if (DataFormat.isEmpty(flowNo)) {
+				lisdebt.setErrmsg("申请流水号flowNo不能为空！");
+				lisdebt.setResultCode(B2BConstants.FAILED);
+				return lisdebt;
+			}
+			try {
+				lisdebt = clpmBusinessService.saveDebtInfo(lisdebt);
+				lisdebt.setRcvMsg(xStream.toXML(lisdebt));
+			} catch (Exception e) {
+				log.error(e);
+				lisdebt.setResultCode(B2BConstants.FAILED);
+				lisdebt.setErrmsg("保存失败，详情如下：" + e.getMessage());
+			}
+		} else {
+			lisdebt.setResultCode(B2BConstants.FAILED);
+			lisdebt.setErrmsg("系统在此时间段不能访问 ");
+		}
+		afterMethod(lisdebt, commLog);
+		return lisdebt;
+	}
+
+	/**
+	 * @Description: 中建八局从SCF获取借据状态
+	 * @param LnciBaseVO
+	 * @return
+	 * @throws CommonException 
+	 */
+	public LnciBaseVO LnciBaseVO(LnciBaseVO listlnci) throws CommonException {
+		TblCommLog commLog = befordMethod(listlnci);
+		if (SCFDateUtil.isInTime()) {
+			String flowNo = listlnci.getFlowNo();
+			if (DataFormat.isEmpty(flowNo)) {
+				listlnci.setErrmsg("申请流水号flowNo不能为空！");
+				listlnci.setResultCode(B2BConstants.FAILED);
+				return listlnci;
+			}
+
+			try {
+				listlnci = clpmBusinessService.queryLnci(listlnci);
+		    	listlnci.setRcvMsg(xStream.toXML(listlnci));
+			} catch (Exception e) {
+				log.error(e);
+				listlnci.setResultCode(B2BConstants.FAILED);
+				listlnci.setErrmsg("查询失败，详情如下：" + e.getMessage());
+			}
+		} else {
+			listlnci.setResultCode(B2BConstants.FAILED);
+			listlnci.setErrmsg("系统在此时间段不能访问 ");
+		}
+		afterMethod(listlnci, commLog);
+		return listlnci;
+	}
+	/** IFSP接口 **   公共方法END  **/
+
+
+
+}

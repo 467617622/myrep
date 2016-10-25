@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.scf.systemmng.data">
+	<class name="TblDebtExtInfo" table="TBL_DEBT_EXT_INFO">
+		<meta attribute="sync-DAO">true</meta>
+		<id name="id" type="string" column="ID">
+			<generator class="assigned" />
+		</id>
+
+		<property name="custcdSaller" column="CUSTCD_SALLER" type="string"
+			not-null="false" length="50" />
+		<property name="cnameBuyer" column="CNAME_BUYER" type="string"
+			not-null="false" length="250" />
+		<property name="custcdBuyer" column="CUSTCD_BUYER" type="string"
+			not-null="false" length="50" />
+		<property name="cnameSeller" column="CNAME_SELLER" type="string"
+			not-null="false" length="250" />
+		<property name="appNum" column="APP_NUM" type="string"
+			not-null="false" length="80" />
+		<property name="billAmount" column="BILL_AMOUNT" type="big_decimal"
+			not-null="false" length="16" />
+		<property name="billDate" column="BILL_DATE" type="java.util.Date"
+			not-null="false" length="20" />
+		<property name="debtContNo" column="DEBT_CONTNO" type="string"
+			not-null="false" length="40" />
+		<property name="creditPeriod" column="CREDIT_PERIOD" type="big_decimal"
+			not-null="false" length="30" />
+		<property name="status" column="STATUS" type="string"
+			not-null="false" length="4" />
+		
+	</class>
+</hibernate-mapping>

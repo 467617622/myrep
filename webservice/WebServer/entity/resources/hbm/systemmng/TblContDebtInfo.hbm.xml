@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.scf.systemmng.data">
+	<class name="TblContDebtInfo" table="TBL_CONT_DEBT_INFO">
+		<meta attribute="sync-DAO">true</meta>
+
+		<id name="debtContno" type="string" column="DEBT_CONTNO">
+			<generator class="assigned" />
+		</id>
+
+		<property name="loanPercent" column="LOAN_PERCENT" type="big_decimal"
+			not-null="false" length="9" />
+
+		<property name="factType" column="FACT_TYPE" type="string"
+			not-null="false" length="1" />
+
+		<property name="factPattern" column="FACT_PATTERN" type="string"
+			not-null="false" length="1" />
+
+		<property name="recoverType" column="RECOVER_TYPE" type="string"
+			not-null="false" length="1" />
+
+		<property name="financingType" column="FINANCING_TYPE" type="string"
+			not-null="false" length="1" />
+
+		<property name="returnAccount" column="RETURN_ACCOUNT" type="string"
+			not-null="false" length="100" />
+
+		<property name="chargeType" column="CHARGE_TYPE" type="string"
+			not-null="false" length="2" />
+
+		<property name="noticeType" column="NOTICE_TYPE" type="string"
+			not-null="false" length="2" />
+
+		<property name="supplyChainPdId" column="SUPPLY_CHAIN_PD_ID"
+			type="string" not-null="false" length="10" />
+
+		<property name="custcd" column="CUSTCD" type="string"
+			not-null="false" length="20" />
+
+		<property name="curcd" column="CURCD" type="string" not-null="false"
+			length="3" />
+
+		<property name="contAmount" column="CONT_AMOUNT" type="big_decimal"
+			not-null="false" length="16" />
+
+		<property name="startDate" column="START_DATE" type="date"
+			not-null="false" length="7" />
+
+		<property name="endDate" column="END_DATE" type="date"
+			not-null="false" length="7" />
+
+		<property name="loanWay" column="LOAN_WAY" type="string"
+			not-null="false" length="20" />
+
+		<property name="contStatus" column="CONT_STATUS" type="string"
+			not-null="false" length="20" />
+
+		<property name="accountNo" column="ACCOUNT_NO" type="string"
+			not-null="false" length="50" />
+
+		<property name="bailAcctNo" column="BAIL_ACCT_NO" type="string"
+			not-null="false" length="50" />
+
+		<property name="mgrno" column="MGRNO" type="string" not-null="false"
+			length="20" />
+
+		<property name="lastUpdBrcode" column="LAST_UPD_BRCODE" type="string"
+			not-null="false" length="20" />
+
+		<property name="lastUpdTlrno" column="LAST_UPD_TLRNO" type="string"
+			not-null="false" length="20" />
+
+		<property name="lastUpdDate" column="LAST_UPD_DATE" type="java.util.Date"
+			not-null="false" />
+
+		<property name="brcode" column="BRCODE" type="string"
+			not-null="false" length="20" />
+
+		<property name="remark" column="REMARK" type="string"
+			not-null="false" length="100" />
+
+		<property name="isAutoPay" column="IS_AUTO_PAY" type="string"
+			not-null="false" length="10" />
+
+		<property name="autoPayDays" column="AUTO_PAY_DAYS" type="integer"
+			not-null="false" />
+
+		<property name="serviceContent" column="SERVICE_CONTENT"
+			type="string" not-null="false" length="10" />
+
+		<property name="repayPurpose" column="REPAY_PURPOSE" type="string"
+			not-null="false" length="10" />
+
+		<property name="dueBalanceRule" column="DUE_BALANCE_RULE"
+			type="string" not-null="false" length="10" />
+
+		<property name="paymentVerifyRule" column="PAYMENT_VERIFY_RULE"
+			type="string" not-null="false" length="10" />
+
+		<property name="reparationProtNo" column="REPARATION_PROT_NO"
+			type="string" not-null="false" length="100" />
+
+		<property name="lease" column="LEASE" type="string" not-null="false"
+			length="10" />
+
+		<property name="repurchaser" column="REPURCHASER" type="string"
+			not-null="false" length="100" />
+
+		<property name="repurchaseProtNo" column="REPURCHASE_PROT_NO"
+			type="string" not-null="false" length="100" />
+
+		<property name="factoringBrcode" column="FACTORING_BRCODE"
+			type="string" not-null="false" length="20" />
+
+		<property name="reparationTerm" column="REPARATION_TERM"
+			type="integer" not-null="false" length="38" />
+
+		<property name="reparationPercent" column="REPARATION_PERCENT"
+			type="big_decimal" not-null="false" length="10" />
+
+		<property name="cumulativeReparationAmt" column="CUMULATIVE_REPARATION_AMT"
+			type="big_decimal" not-null="false" length="16" />
+			
+		<property name="cooperationBrcode" column="COOPERATION_BRCODE"
+			type="string" not-null="false" length="20" />	
+					
+		<property name="rentSettleWay" column="RENT_SETTLE_WAY"
+			type="string" not-null="false" length="1" />
+						
+		<property name="poolBailAmt" column="POOL_BAIL_AMT"
+			type="big_decimal" not-null="false" length="16" />			
+		<property name="mastContno" column="MAST_CONTCODE"
+			type="string" not-null="false" length="20" />			
+		<property name="isCycle" column="IS_CYCLE"
+			type="string" not-null="false" length="1" />			
+		<property name="isNoapprove" column="IS_NOAPPROVE"
+			type="string" not-null="false" length="1" />
+				
+			<property name="rateType" column="RATE_TYPE"
+			type="string" not-null="false" length="10" />	
+			<property name="baseYearRate" column="BASE_YEAR_RATE"
+			type="big_decimal" not-null="false" length="12" />	
+			<property name="rateFloatType" column="RATE_FLOAT_TYPE"
+			type="string" not-null="false" length="10" />	
+			<property name="rateFloatValue" column="RATE_FLOAT_VALUE"
+			type="big_decimal" not-null="false" length="12" />	
+			<property name="executeRate" column="EXECUTE_RATE"
+			type="big_decimal" not-null="false" length="12" />	
+			<property name="repayMethod" column="REPAY_METHOD"
+			type="string" not-null="false" length="10" />	
+			<property name="rateAdjustType" column="RATE_ADJUST_TYPE"
+			type="string" not-null="false" length="10" />	
+			<property name="loanUse" column="LOAN_USE"
+			type="string" not-null="false" length="200" />	
+			
+			
+		<!-- add by SSH	新增计息周期，罚息利率		2016/08/08 -->	
+		<!-- <property name="preCycleMethod" column="PRE_CYCLE_METHOD" type="string"
+			not-null="false" length="10" /> -->
+			
+		<property name="preCycleRate" column="PRE_CYCLE_RATE" type="string"
+			not-null="false" length="10" />
+			
+		<property name="punishIntRate" column="PUNISH_INT_RATE" type="big_decimal"
+			not-null="false" length="12" />
+				
+	</class>
+</hibernate-mapping>

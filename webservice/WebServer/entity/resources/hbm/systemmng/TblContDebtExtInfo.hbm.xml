@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.scf.systemmng.data">
+	<class name="TblContDebtExtInfo" table="TBL_CONT_DEBT_EXT_INFO">
+		<meta attribute="sync-DAO">false</meta>
+		<id name="id" type="string" column="ID">
+			<generator class="assigned" />
+		</id>
+		
+		<property name="businessNo" column="BUSINESS_NO" type="string"
+			not-null="true" length="20" />
+			
+		<property name="buyerName" column="BUYER_NAME" type="string"
+			not-null="false" length="100" />
+
+		<property name="buyerCustcd" column="BUYER_CUSTCD" type="string"
+			not-null="false" length="15" />
+			
+		<property name="loanDays" column="LOAN_DAYS" type="integer"
+			not-null="false" length="22" />
+			
+		<property name="debtGraceDays" column="DEBT_GRACE_DAYS" type="integer"
+			not-null="false" length="22" />
+			
+		<property name="batchNumber" column="BATCH_NUMBER" type="string"
+			not-null="false" length="50" />
+			
+		<property name="creditTerm" column="CREDIT_TERM" type="integer"
+			not-null="false" length="22" />
+			
+		<property name="creditAmt" column="CREDIT_AMT"
+			type="big_decimal" not-null="false" length="16" />
+			
+		<property name="riskTerm" column="RISK_TERM" type="integer"
+			not-null="false" length="22" />
+			
+		<property name="recoverType" column="RECOVER_TYPE" type="string"
+			not-null="false" length="1" />
+			
+		<property name="factPattern" column="FACT_PATTERN" type="string"
+			not-null="false" length="2" />
+			
+		<property name="noticeType" column="NOTICE_TYPE" type="string"
+			not-null="false" length="2" />
+			
+		<property name="loanPercent" column="LOAN_PERCENT"
+			type="big_decimal" not-null="false" length="9" />
+	</class>
+</hibernate-mapping>

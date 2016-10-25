@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+   xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-2.0.xsd ">
+	 <import resource="dao.xml" /> 
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="locations">
+            <list>
+                 <value>classpath:Dataconfig.properties</value>
+            </list>
+	    </property>
+     </bean>
+	<!-- add by sijun.yu 2015-1-27 生产环境使用JNDI模式 -->
+	
+    <bean id="bmsdataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>${jndiName}</value>
+		</property>
+	</bean>
+
+<!-- -->
+	 <!-- modify by sijun.yu 2015-1-27 开发人员使用连接池模式
+	 <bean id="bmsdataSource"
+		class="org.logicalcobwebs.proxool.ProxoolDataSource" >
+		<property name="driver">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+        <property name="driverUrl">
+            <value>${jdbc.url}</value>
+		</property>
+		<property name="user">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+		<property name="alias">
+			<value>proxoolPool</value>
+		</property>
+	</bean>
+-->	
+	<bean id="entityInterceptor"
+		class="com.huateng.ebank.framework.util.HibernateInterceptor">
+	</bean>
+	<!-- Choose the dialect that matches your "dataSource" definition -->
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="entityInterceptor">
+			<ref local="entityInterceptor" />
+		</property>
+		<property name="dataSource">
+			<ref bean="bmsdataSource" />
+		</property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:/resources/hbm/**/*.hbm.xml</value>
+			</list>
+		</property>
+	 
+		<property name="hibernateProperties">
+			<props>
+			    <!--针对某一具体数据库，可采用具体方言-->
+                <!--常见的Dialect有：
+				MySQL: com.huateng.hibernate.dialect.HTMySQL5Dialect
+				Informix：com.huateng.hibernate.dialect.HTInformixDialect
+				Oracle：com.huateng.hibernate.dialect.HTOracle9Dialect
+				DB2：com.huateng.hibernate.dialect.HTDB2Dialect
+				-->
+				<prop key="hibernate.dialect">com.huateng.hibernate.dialect.HTOracle9Dialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				  <!-- 将SQL脚本进行格式化后再输出 -->
+                <prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.connection.release_mode">auto</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</prop>
+				<prop key="hibernate.connection.SetBigStringTryClob">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+	<bean id="myTransactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="mySessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- 配置事务的传播特行（JoinPoint） -->  
+    <tx:advice id="txAdvice" transaction-manager="myTransactionManager">   
+      <tx:attributes>  
+        <tx:method name="get*" read-only="true" propagation="NOT_SUPPORTED"/>  
+        <tx:method name="*" rollback-for="Exception"/>   
+      </tx:attributes>   
+    </tx:advice>    
+      
+    <!-- 配置那些类参与事务（PointCut） -->  
+    <aop:config>   
+       <aop:pointcut id="transactionPointcut" expression="execution(* com.huateng.scf.service.b2b.*.*(..))"/>   
+       <aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut"/>   
+    </aop:config>
+</beans>
